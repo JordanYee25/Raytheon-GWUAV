@@ -1,0 +1,188 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="avc-field">
+    <scene>
+
+      <sky>
+        <time>10</time>
+        <clouds>
+            <speed>.5</speed>
+        </clouds>
+      </sky>
+
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+    </scene>
+
+    <gui>
+      <camera name="user_camera">
+        <pose>-5 0 1 0 0.2 0</pose>
+      </camera>
+    </gui>
+    <physics type="ode">
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>100</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>-1</real_time_update_rate>
+      <!--<max_step_size>0.0020</max_step_size>-->
+    </physics>
+    <gravity>0 0 -9.8</gravity>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>5000 5000</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+
+        <visual name="field_boundary">
+          <pose>0 0 0.005 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+               <normal>0 0 1</normal>
+               <size>29 29</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+               <uri>file://media/materials/scripts/gazebo.material</uri>
+               <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+
+        <visual name="field_grass">
+          <pose>0 0 0.006 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>27.4 27.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+               <uri>file://media/materials/scripts/gazebo.material</uri>
+               <name>Gazebo/Grass</name>
+            </script>
+          </material>
+        </visual>
+       
+        <visual name="background_grass">
+          <pose>0 0 -0.1 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>5000 5000</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grass</name>
+            </script>
+          </material>
+        </visual>
+        
+        <visual name="marker-22">
+          <pose>8 1 .008 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>.3048 .3048 </size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://ArUco_22/materials/scripts</uri>
+              <uri>model://ArUco_22/materials/textures</uri>
+              <name>ArUco_22</name>
+            </script>
+          </material>
+        </visual>
+
+        <visual name="marker-17">
+          <pose>-11 6 .008 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>.3048 .3048 </size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://ArUco_17/materials/scripts</uri>
+              <uri>model://ArUco_17/materials/textures</uri>
+              <name>ArUco_17</name>
+            </script>
+          </material>
+        </visual>
+
+        <visual name="marker-200">
+          <pose>-9 -7 .008 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>.3048 .3048 </size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://ArUco_200/materials/scripts</uri>
+              <uri>model://ArUco_200/materials/textures</uri>
+              <name>ArUco_200</name>
+            </script>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+    <model name="iris_demo">
+      <include>
+        <uri>model://iris_with_ardupilot</uri>
+      </include>
+    </model>
+
+  </world>
+
+  <author>
+    <name>Aarifah Ullah</name>
+    <email>aarifahullah@gmail.com</email>
+  </author>
+
+  <description>
+    A field that represents the drone competition environment
+  </description>
+</sdf>

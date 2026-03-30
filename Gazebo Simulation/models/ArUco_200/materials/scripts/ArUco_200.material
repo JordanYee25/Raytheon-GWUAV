@@ -1,0 +1,14 @@
+material ArUco_200
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture marker-200.png
+        scale 1.0 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+
+/dataset
+/yolov8_env
+/DS_Store
+
+*.pt
+*.onnx
+*.engine
+runs/

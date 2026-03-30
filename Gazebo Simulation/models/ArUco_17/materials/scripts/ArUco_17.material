@@ -1,0 +1,14 @@
+material ArUco_17
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture marker-17.png
+        scale 1.0 1.0
+      }
+    }
+  }
+}

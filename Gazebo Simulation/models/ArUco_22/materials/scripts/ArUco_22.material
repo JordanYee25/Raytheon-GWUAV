@@ -1,0 +1,14 @@
+material ArUco_22
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture marker-22.png
+        scale 1.0 1.0
+      }
+    }
+  }
+}
