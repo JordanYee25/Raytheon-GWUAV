@@ -1,22 +1,22 @@
 
 # Overview
-This is the repository of the GWUAV team of the GWU 2025 RTX Autonomous Compeition. We implemented a dual-drone solution, using a scout drone and package delivery drone. Our UAV code enable both drones to fly autonomously.
+This is the repository of the GWUAV team of the GWU 2025 RTX Autonomous Competition. We implemented a dual-drone solution, using a scout drone and package delivery drone. Our UAV code enable both drones to fly autonomously.
 
-- Comms : Communications subteam, responsible for the transer of data between both drones. As well as the logging of data from drones to a laptop. It was vital that in order to maintain autonomy, the base station laptop did not transmit any information to the drones, and only prompted them to start, or recieve logs.
-- Comp Scripts : Scripts used for the competition challenges, including calibrations for onboard cameras, and test scripts for pre-flight checks. Challenge 1 uses only the scout drone, while challenge 2 incorperates both a scout and package delivery (PD) drone.
-- Visual Processing : THe visual processing system is more than just computer vision. It takes raw camera input and detects and identifies ArUco markers. It will then extract pose informaton from the correct marker and communicate it to the Navigation system
-- Gazebo Simulaton : Simulations are an important part of testing the navigation scripts and visualizing mision plans. The simulator that was primarily used was Gazebo with models for ArUco markers. The Sim Scripts sub-directory shows different flight scripts that emulate real navigation in the real world. 
+- Comms : Communications subteam, responsible for the transfer of data between both drones. As well as the logging of data from drones to a laptop. It was vital that in order to maintain autonomy, the base station laptop did not transmit any information to the drones, and only prompted them to start, or receive logs.
+- Comp Scripts : Scripts used for the competition challenges, including calibrations for onboard cameras, and test scripts for pre-flight checks. Challenge 1 uses only the scout drone, while challenge 2 incorporates both a scout and package delivery (PD) drone.
+- Visual Processing : THe visual processing system is more than just computer vision. It takes raw camera input and detects and identifies ArUco markers. It will then extract pose information from the correct marker and communicate it to the Navigation system
+- Gazebo Simulation : Simulations are an important part of testing the navigation scripts and visualizing mission plans. The simulator that was primarily used was Gazebo with models for ArUco markers. The Sim Scripts sub-directory shows different flight scripts that emulate real navigation in the real world. 
 
 ## Navigation Subteam
 The Navigation subteam was an integral part of what allowed the drone to fly autonomously, but there is no dedicated directory. This is because many of the scripts that showcase navigation are more meaningfully represented in either competition or simulation scripts. For example, all Challenge1 and Challenge2 scripts in Comp Scripts were primarily developed and coded by the Navigation team. 
 
 ## Hardware
-The hardware for the onboard computers for initial tests and prototyes was an NVIDIA Jetson Nano but was later swapped to a Raspberry Pi 5 for compatibility with other hardware systems.
+The hardware for the onboard computers for initial tests and prototypes was an NVIDIA Jetson Nano but was later swapped to a Raspberry Pi 5 for compatibility with other hardware systems.
 
 ## ArUco Markers
 An ArUco is a system of ID represented by a black and white square. Similar to a QR code, it is comprised of a grid of smaller black and white squares arranged in an array and a one block black border around the marker. One configuration of black and white squares equates to a unique numerical ID. 
 
-Most defauilt marker IDs used in this project are 6x6 format.
+Most default marker IDs used in this project are 6x6 format.
 
 ![An ArUco marker with ID 17](/Gazebo%20Simulation/models/ArUco_17/materials/textures/marker-17.png)
 
@@ -57,11 +57,11 @@ To calibrate a camera:
 Result is a calibration npz file that can be tested by aruco.py or moved to different directories to be used in any script that takes in camera output with a calibration folder
 
 ## Mapit
-Mapit is takes the visual sensor pose information to center the drone above the marker. This increaes the percision of the drone when landing by making small adjustments as it descends
+Mapit is takes the visual sensor pose information to center the drone above the marker. This increases the precision of the drone when landing by making small adjustments as it descends
 
 
 ## ArUco Machine Learning
-Aids the visual processing system using object detetion to improve performance and reliability in busy sensor information
+Aids the visual processing system using object detection to improve performance and reliability in busy sensor information
 
 ### Data set
 Here is the link to install the data set. use the YOLO8 configuration when downloading
@@ -100,7 +100,7 @@ yolo detect predict \
 <p>Navigation simulations with SITL, MAVProxy, Gazebo, MAVLINK, DroneKit, and pymavlink.</p>
 
 ## Shell script simstart.sh
-<p> Running, just the shell script in the terminal should start up SITL with MAVProxy, Gazebo virtual world, and the autonomous mission scripts. You can specify different scripts from the Auto Scipts folder. </p>
+<p> Running, just the shell script in the terminal should start up SITL with MAVProxy, Gazebo virtual world, and the autonomous mission scripts. You can specify different scripts from the Auto Scripts folder. </p>
 
 ## How to use capstone.world
 <p>Capstone.world is a Gazebo simulation environment. It is supposed to emulate the real settings of the drone flight. You can make this as specific and realistic as you want by defining the gravity, time, wind conditions, etc. Gravity is default 9.8 m/s^2,
@@ -123,6 +123,6 @@ gazebo --verbose ~/ardupilot_gazebo/worlds/capstone.world
 - ```https://cs.engineering.gwu.edu/multidisciplinary-team-wins-most-innovative-design-award-rtx-drone-competition```
 - ```https://engineering.gwu.edu/rtx-uav-raytheon-autonomous-vehicle-competition```
 
-### RTX Video of Compeition Day
+### RTX Video of Competition Day
 - ```https://www.youtube.com/watch?v=TaiLjWskhFQ```
 
